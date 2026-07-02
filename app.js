@@ -1,26 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const billAmountInput = document.getElementById('billAmount');
-    const tipPercentageSelect = document.getElementById('tipPercentage');
-    const tipAmountDisplay = document.getElementById('tipAmount');
-    const totalAmountDisplay = document.getElementById('totalAmount');
+document.getElementById('calculateBtn').addEventListener('click', function() {
+    const billAmount = parseFloat(document.getElementById('billAmount').value);
+    const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.textContent = '';
 
-    function calculateTip() {
-        const billAmount = parseFloat(billAmountInput.value);
-        const tipPercentage = parseFloat(tipPercentageSelect.value);
-
-        if (isNaN(billAmount) || billAmount < 0) {
-            tipAmountDisplay.textContent = 'Tip: $0.00';
-            totalAmountDisplay.textContent = 'Total: $0.00';
-            return;
-        }
-
-        const tipAmount = (billAmount * (tipPercentage / 100)).toFixed(2);
-        const totalAmount = (billAmount + parseFloat(tipAmount)).toFixed(2);
-
-        tipAmountDisplay.textContent = `Tip: $${tipAmount}`;
-        totalAmountDisplay.textContent = `Total: $${totalAmount}`;
+    if (isNaN(billAmount) || billAmount < 0) {
+        errorMessage.textContent = 'Please enter a valid bill amount.';
+        return;
     }
 
-    billAmountInput.addEventListener('input', calculateTip);
-    tipPercentageSelect.addEventListener('change', calculateTip);
+    if (tipPercentage === 0) {
+        errorMessage.textContent = 'Please select a tip percentage.';
+        return;
+    }
+
+    const tipAmount = (billAmount * (tipPercentage / 100)).toFixed(2);
+    const totalAmount = (billAmount + parseFloat(tipAmount)).toFixed(2);
+
+    document.getElementById('tipAmount').textContent = `Tip: $${tipAmount}`;
+    document.getElementById('totalAmount').textContent = `Total: $${totalAmount}`;
 });
