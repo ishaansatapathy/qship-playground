@@ -1,52 +1,54 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
+    max-width: 400px;
+    margin: auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 400px;
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin: 10px 0 5px;
 }
 
-input, select {
+input, select, button {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.results {
-    margin-top: 20px;
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
-.results p {
-    font-size: 18px;
-    margin: 5px 0;
+button:hover {
+    background-color: #218838;
+}
+
+#errorMessage {
+    color: red;
+    text-align: center;
 }
 
 @media (max-width: 600px) {
-    h1 {
-        font-size: 20px;
+    .container {
+        padding: 15px;
     }
 }
